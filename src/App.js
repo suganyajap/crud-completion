@@ -4,13 +4,25 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 import { EditUser } from './EditUser';
 import { ListUsers } from './ListUsers';
 import { CreateUser } from './CreateUser';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
   const history=useHistory();
+  const [mode,setMode]=useState("dark");
+
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <AppBar position="static" style={{marginBottom:"24px"}}>
      <Toolbar variant="dence">
@@ -29,6 +41,14 @@ function App() {
        color="inherit"
        onClick={()=>history.push("/create-user")}
        >Create User</Button>
+
+<Button 
+        startIcon={mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+        style={{ marginLeft:"auto" }}
+       variant="text"
+       color="inherit"
+       onClick={()=>setMode(mode==="light" ? "dark" : "light")}
+       >{ mode==="light" ? "dark" : "light" } Mode</Button>
         </Toolbar>
        </AppBar>
 
@@ -53,6 +73,7 @@ function App() {
     </Switch>
 
     </div>
+    </ThemeProvider>
   );
 }
 
