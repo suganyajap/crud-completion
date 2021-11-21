@@ -1,6 +1,7 @@
 import './App.css';
 import {Route,Switch} from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
+import Paper from '@mui/material/Paper';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
@@ -23,6 +24,7 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
+      <Paper elevation={4} style={{bordeRadius:"0px",minHeight:"100vh"}} >
     <div className="App">
       <AppBar position="static" style={{marginBottom:"24px"}}>
      <Toolbar variant="dence">
@@ -73,6 +75,7 @@ function App() {
     </Switch>
 
     </div>
+    </Paper>
     </ThemeProvider>
   );
 }
