@@ -1,6 +1,4 @@
 import { Card, CardActions, CardContent } from "@mui/material";
-
-
 export function  User({ name,pic ,email,mobile,occupation,salary,deleteButton,editButton}){
     return(
             <Card className="user-container">
